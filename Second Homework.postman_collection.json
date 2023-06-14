@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "9e759575-5cf5-48c5-a745-bf5cd493a16a",
+		"name": "Second Homework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Backapp",
+			"item": [
+				{
+					"name": "Without message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/backapp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"backapp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "With message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/backapp?message=Hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"backapp"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Hello"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Frontapp",
+			"item": [
+				{
+					"name": "No call without message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/frontapp/local",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"frontapp",
+								"local"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "No call with message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/frontapp/local?message=Hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"frontapp",
+								"local"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Hello"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Will call with message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/frontapp?message=Hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"frontapp"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Hello"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Will call without message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/frontapp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"frontapp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
