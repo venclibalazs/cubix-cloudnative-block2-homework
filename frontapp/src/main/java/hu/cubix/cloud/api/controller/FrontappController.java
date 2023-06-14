@@ -38,6 +38,7 @@ public class FrontappController {
 
     @GetMapping("/local")
     public FrontappResponse noCall(@RequestParam(required = false, name = "message") String message) {
+        LOGGER.info("Local endpoint was called - no call will be made to backapp - message was: {}", message);
         if (!StringUtils.hasText(message)) {
             message = defaultMessage;
         }
@@ -47,17 +48,22 @@ public class FrontappController {
 
     @GetMapping
     public FrontappResponse call(@RequestParam(required = false, name = "message") String message) {
+        LOGGER.info("Preparing for calling backapp - message was: {}", message);
         if (!StringUtils.hasText(message)) {
             message = defaultMessage;
         }
         LocalDateTime start = LocalDateTime.now();
+        LOGGER.info("Calling backapp");
         BackappResponse backappResponse = api.backapp(message);
+        LOGGER.info("Backapp call was successful, response was: {}", backappResponse);
         Duration timeBetween = Duration.between(start, backappResponse.time());
 
-        return new FrontappResponse(timeBetween.abs().toMillis(), backappResponse.message(),
+        FrontappResponse frontappResponse = new FrontappResponse(timeBetween.abs().toMillis(), backappResponse.message(),
                 homeworkOwner, getHostAddress(),
                 backappResponse.homeworkOwner(), backappResponse.hostAddress(),
                 doesExtraImageDataMatch(extraImageData, backappResponse.extraImageData()));
+        LOGGER.info("Response will be: {}", frontappResponse);
+        return frontappResponse;
     }
 
     private boolean doesExtraImageDataMatch(String frontapp, String backapp) {

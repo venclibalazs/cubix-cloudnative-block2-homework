@@ -33,10 +33,21 @@ public class BackappController {
 
     @GetMapping
     public BackappResponse backapp(@RequestParam(required = false, name = "message") String message) {
+        LOGGER.info("Request arrived with message {}", message);
         if (!StringUtils.hasText(message)) {
-            message = defaultMessage;
+            LOGGER.info("Message was empty, fall back to default");
+            if (!StringUtils.hasText(defaultMessage)) {
+                LOGGER.info("Default message was empty, falling back to hardcoded default");
+                message = "hardcoded-default-backapp-message";
+            }
+            else {
+                message = defaultMessage;
+            }
         }
-        return new BackappResponse(LocalDateTime.now(), message, homeworkOwner, getHostAddress(), extraImageData);
+        BackappResponse backappResponse = new BackappResponse(LocalDateTime.now(), message,
+                homeworkOwner, getHostAddress(), extraImageData);
+        LOGGER.info("Returning response: {}", backappResponse);
+        return backappResponse;
     }
 
     private String getHostAddress() {
