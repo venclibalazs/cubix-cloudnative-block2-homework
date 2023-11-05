@@ -1,0 +1,15 @@
+meta {
+  name: No call with message
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/frontapp/local?message=Hello
+  body: none
+  auth: none
+}
+
+query {
+  message: Hello
+}

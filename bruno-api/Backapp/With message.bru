@@ -1,0 +1,15 @@
+meta {
+  name: With message
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8081/backapp?message=Hello
+  body: none
+  auth: none
+}
+
+query {
+  message: Hello
+}
