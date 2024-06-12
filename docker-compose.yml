@@ -1,0 +1,11 @@
+services:
+    backapp:
+        image: homework2-backapp:latest
+        container_name: backapp
+    frontapp:
+        image: homework2-frontapp:latest
+        container_name: frontapp
+        ports:
+        - 8080:8080
+        environment:
+        - BACK_URL=http://backapp:8080
